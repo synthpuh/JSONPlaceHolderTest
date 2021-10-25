@@ -17,11 +17,21 @@ class PhotosTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTable()
         loadAlbums(of: user)
-        
-        loadPhotos(of: albumsArray)
     }
+    
+    func setupTable() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reusePhotoCellIdentifier")
+        
+        let nib = UINib(nibName: "PhotoTableViewCell", bundle: nil)
+        
+        tableView.register(nib, forCellReuseIdentifier: "reusePhotoCellIdentifier")
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,20 +41,13 @@ class PhotosTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photosArray.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reusePhotoCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reusePhotoCellIdentifier", for: indexPath) as! PhotoTableViewCell
         
-        configureCell(cell, for: indexPath)
+        cell.set(photoModel: photosArray[indexPath.row])
         
         return cell
-    }
-    
-    func configureCell(_ cell: UITableViewCell, for index: IndexPath) {
-        
-        cell.textLabel?.text = String(photosArray[index.row].id)
-        cell.imageView?.image = UIImage(systemName: "square.and.arrow.up")
     }
     
     func loadAlbums(of user: UserModel?) {
@@ -61,15 +64,11 @@ class PhotosTableViewController: UITableViewController {
                 return
             }
             
-            for album in albums {
-                
-                if album.userId == user.id {
-                    
-                    DispatchQueue.main.async {
-                        self?.albumsArray.append(album)
-                        self?.tableView.reloadData()
-                    }
+            DispatchQueue.main.async {
+                self?.albumsArray = albums.filter { album in
+                    album.userId == user.id
                 }
+                self?.loadPhotos(of: self?.albumsArray)
             }
         }
     }
@@ -86,17 +85,13 @@ class PhotosTableViewController: UITableViewController {
             
             guard let photos = photosResponse as? PhotosModelResponse else { return }
             
-            
-            
             for album in albums {
-                for photo in photos {
-                   
-                    if photo.albumId == album.id {
-                        DispatchQueue.main.async {
-                            self?.photosArray.append(photo)
-                            self?.tableView.reloadData()
-                        }
-                    }
+                
+                DispatchQueue.main.async {
+                    self?.photosArray.append(contentsOf: photos.filter({ photo in
+                        photo.albumId == album.id
+                    }))
+                    self?.tableView.reloadData()
                 }
             }
         }

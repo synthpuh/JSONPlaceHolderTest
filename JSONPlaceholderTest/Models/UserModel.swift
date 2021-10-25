@@ -11,6 +11,7 @@ struct UserModel: AnyResponse {
     
     var id: Int
     var name: String
+    
 }
 
 typealias UsersModelResponse = [UserModel]

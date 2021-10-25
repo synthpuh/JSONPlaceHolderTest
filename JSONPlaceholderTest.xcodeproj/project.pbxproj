@@ -10,6 +10,8 @@
 		FC9779A8272593DF0087A89D /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9779A7272593DF0087A89D /* PhotosTableViewController.swift */; };
 		FC9779AA272596C40087A89D /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9779A9272596C40087A89D /* PhotoModel.swift */; };
 		FC9779AF272598240087A89D /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9779AE272598240087A89D /* AlbumModel.swift */; };
+		FC9779B5272602E20087A89D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9779B3272602E20087A89D /* PhotoTableViewCell.swift */; };
+		FC9779B6272602E20087A89D /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9779B4272602E20087A89D /* PhotoTableViewCell.xib */; };
 		FCCCB4232723340500EB9C1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCB4222723340500EB9C1B /* AppDelegate.swift */; };
 		FCCCB4252723340500EB9C1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCB4242723340500EB9C1B /* SceneDelegate.swift */; };
 		FCCCB42A2723340500EB9C1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCCCB4282723340500EB9C1B /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 		FC9779A7272593DF0087A89D /* PhotosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
 		FC9779A9272596C40087A89D /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		FC9779AE272598240087A89D /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
+		FC9779B3272602E20087A89D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		FC9779B4272602E20087A89D /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		FCCCB41F2723340500EB9C1B /* JSONPlaceholderTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONPlaceholderTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCCB4222723340500EB9C1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCCCB4242723340500EB9C1B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +54,7 @@
 		FC9779AB272596E00087A89D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FC9779B0272601110087A89D /* Cell */,
 				FCCCB43A27237A3E00EB9C1B /* UserModel.swift */,
 				FC9779AE272598240087A89D /* AlbumModel.swift */,
 				FC9779A9272596C40087A89D /* PhotoModel.swift */,
@@ -72,6 +77,15 @@
 				FCCCB438272372FE00EB9C1B /* NetworkService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		FC9779B0272601110087A89D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FC9779B3272602E20087A89D /* PhotoTableViewCell.swift */,
+				FC9779B4272602E20087A89D /* PhotoTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		FCCCB4162723340500EB9C1B = {
@@ -165,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCCB42F2723340B00EB9C1B /* LaunchScreen.storyboard in Resources */,
+				FC9779B6272602E20087A89D /* PhotoTableViewCell.xib in Resources */,
 				FCCCB42C2723340B00EB9C1B /* Assets.xcassets in Resources */,
 				FCCCB42A2723340500EB9C1B /* Main.storyboard in Resources */,
 			);
@@ -182,6 +197,7 @@
 				FCCCB4232723340500EB9C1B /* AppDelegate.swift in Sources */,
 				FCCCB4252723340500EB9C1B /* SceneDelegate.swift in Sources */,
 				FC9779A8272593DF0087A89D /* PhotosTableViewController.swift in Sources */,
+				FC9779B5272602E20087A89D /* PhotoTableViewCell.swift in Sources */,
 				FCCCB439272372FE00EB9C1B /* NetworkService.swift in Sources */,
 				FCCCB43B27237A3E00EB9C1B /* UserModel.swift in Sources */,
 				FCCCB43727236E8500EB9C1B /* UsersTableViewController.swift in Sources */,

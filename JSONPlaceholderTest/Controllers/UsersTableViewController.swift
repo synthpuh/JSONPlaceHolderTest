@@ -9,11 +9,13 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
     
+    static var cache = NSCache<NSNumber, UIImage>()
+    
     var usersArray: [UserModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         loadUsersTable()
 
     }
@@ -41,7 +43,24 @@ class UsersTableViewController: UITableViewController {
         performSegue(withIdentifier: "fromUsersToPhotos", sender: usersArray[indexPath.row])
     }
     
-    
+    func loadUsersTable() {
+        
+        usersArray = []
+        
+        let networkService = NetworkService()
+        
+        networkService.fetchData(from: "/users") { [weak self] usersModelResponse in
+            
+            guard let users = usersModelResponse as? UsersModelResponse else { return }
+            
+            for user in users {
+                DispatchQueue.main.async {
+                    self?.usersArray.append(user)
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+    }
 
     
     // MARK: - Navigation
